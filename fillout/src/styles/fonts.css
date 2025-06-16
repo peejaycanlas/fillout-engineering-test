@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'BL Melody Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('BL Melody Regular'), url('../assets/fonts/BLMelody-Regular.woff') format('woff');
+}

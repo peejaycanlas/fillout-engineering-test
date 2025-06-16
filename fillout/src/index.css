@@ -1,9 +1,11 @@
 @import "tailwindcss";
+@import "./styles/fonts.css";
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -33,6 +35,7 @@ body {
 }
 
 h1 {
+  font-family: 'BL Melody Regular', 'Inter', sans-serif;
   font-size: 3.2em;
   line-height: 1.1;
 }
