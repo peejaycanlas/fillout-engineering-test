@@ -1,0 +1,15 @@
+{
+    "pagetab.info": "Info",
+    "pagetab.details": "Details",
+    "pagetab.other": "Other",
+    "pagetab.ending": "Ending",
+    "pagetab.addpage": "Add page",
+    "pagetab.newpage": "New page",
+
+    "settings.title": "Settings",
+    "settings.setFirstPage": "Set as first page",
+    "settings.rename": "Rename",
+    "settings.copy": "Copy",
+    "settings.duplicate": "Duplicate",
+    "settings.delete": "Delete"
+}
