@@ -1,25 +1,19 @@
-import { useState } from 'react'
-import './App.css'
+import LanguageSelector from './features/language-selector/components/LanguageSelector';
+import PageTabs from './features/page-tab/components/PageTabs';
+import { useTranslation, withTranslation } from 'react-i18next';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const { t } = useTranslation();
 
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <main>
+        <div>{t('pagetab.info')}</div>
+        <PageTabs />
+        <LanguageSelector />
+      </main>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default withTranslation()(App);
