@@ -1,7 +1,9 @@
 const PageTabs = () => {
     return (
         <>
-            <h1>Page Tabs</h1>
+            <div className="flex-grow">
+                <h1>Page Tabs</h1>
+            </div>
         </>
     );
 };
