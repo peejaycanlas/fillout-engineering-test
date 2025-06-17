@@ -11,5 +11,8 @@
     "settings.rename": "Rename",
     "settings.copy": "Copy",
     "settings.duplicate": "Duplicate",
-    "settings.delete": "Delete"
+    "settings.delete": "Delete",
+
+    "languageselector.us": "US",
+    "languageselector.jp": "日本"
 }

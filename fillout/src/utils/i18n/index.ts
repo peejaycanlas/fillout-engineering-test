@@ -3,6 +3,7 @@ import { initReactI18next } from "react-i18next";
 
 import enLang from '../../resources/en.json';
 import jpLang from '../../resources/jp.json';
+import i18next from "i18next";
 
 const resources = {
   en: {
@@ -18,7 +19,7 @@ i18n
   .init({
     resources,
     fallbackLng: 'en',
-    lng: 'en',
+    lng: i18next.options.lng,
 
     interpolation: {
       escapeValue: false
