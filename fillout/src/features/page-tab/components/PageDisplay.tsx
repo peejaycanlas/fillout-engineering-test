@@ -1,11 +1,13 @@
-import { useTranslation } from "react-i18next";
+import type { Page } from "../types";
 
-const PageDisplay = () => {
-    const { t } = useTranslation();
+type PageDisplayProps = {
+    currentPage: Page | undefined;
+}
 
+const PageDisplay = ({ currentPage }: PageDisplayProps) => {
     return (
         <section className="flex flex-grow bg-blue-950 text-white rounded-2xl justify-center items-center text-6xl">
-          <div>{t('pagetab.info')}</div>
+          <div>{currentPage?.name}</div>
         </section>
     );
 };
