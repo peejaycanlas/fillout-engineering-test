@@ -53,26 +53,26 @@ const PageTabItem = ({ page, onTabClick }: PageTabItemProps) => {
         }
     };
 
-    const handleOpenContextMenu = (event: MouseEvent): void => {
+    const handleOpenContextMenu = (event: MouseEvent | KeyboardEvent): void => {
         event.preventDefault();
         console.log('handleOpenContextMenu', page);
     };
 
-    const pageClasses: string = "flex items-center py-1 px-2.5 " +
-                                "rounded-lg box-content select-none cursor-pointer " +
-                                `border-[0.5px] ${page.isActive ? 'bg-white text-[#1a1a1a] border-[#e1e1e1]' : 'bg-[#9DA4B226] text-[#677289] border-[transparent]'} ` +
-                                "focus:bg-white focus:text-[#1a1a1a] focus:outline-2 focus:outline-[#2F72E240] focus:border-[#2F72E2] group";
-
     const pageStyles: CSSProperties = {
         transform: CSS.Translate.toString(transform),
-        transition,
-        boxShadow: "0px 1px 3px 0px #0000000A, 0px 1px 1px 0px #00000005"
+        transition
     };
 
     return (
         <SortableItemContext.Provider value={context}>
             <div ref={setNodeRef}
-                className={pageClasses}
+                className={
+                    "flex items-center py-1 px-2.5 " +
+                    "rounded-lg box-content select-none cursor-pointer border-[0.5px] " +
+                    `${page.isActive ? 'bg-white text-[#1a1a1a] border-[#e1e1e1]' : 'bg-[#9DA4B226] text-[#677289] border-[transparent]'} ` +
+                    "focus:bg-white focus:text-[#1a1a1a] focus:outline-2 focus:outline-[#2F72E240] focus:border-[#2F72E2] group " +
+                    "shadow-[0px_1px_3px_0px_#0000000A,0px_1px_1px_0px_#00000005]"
+                }
                 style={pageStyles}
                 {...attributes}
                 {...listeners}

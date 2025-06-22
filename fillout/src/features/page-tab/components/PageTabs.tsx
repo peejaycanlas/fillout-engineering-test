@@ -41,7 +41,7 @@ const PageTabs = ({ pages, onUpdatePages, onSetActivePage, onAddPage }: PageType
     };
 
     return (
-        <section className="flex flex-grow">
+        <div className="flex flex-grow">
             <DndContext
                 sensors={sensors}
                 modifiers={[restrictToHorizontalAxis]}
@@ -63,7 +63,7 @@ const PageTabs = ({ pages, onUpdatePages, onSetActivePage, onAddPage }: PageType
                 </SortableContext>
             </DndContext>
             <PageTabAddButton onAddPage={handleAddPage} />
-        </section>
+        </div>
     );
 };
 
