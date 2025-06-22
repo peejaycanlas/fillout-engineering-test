@@ -1,6 +1,8 @@
 import type { TFunction } from "i18next";
 import type { Page } from "../../features/page-tab/types"
 
+let newPageTabCounter = 0;
+
 export const getPageData = () : Page[] => {
     return [
         {
@@ -30,6 +32,10 @@ export const getPageData = () : Page[] => {
     ];
 };
 
+const getNextPageTabCounter = (): number => {
+    return ++newPageTabCounter;
+};
+
 export const findActivePage = (pages: Page[]): Page | undefined => {
     return pages.find(page => page.isActive);
 };
@@ -55,7 +61,7 @@ export const appendNewPage = (pages: Page[], t: TFunction<"translation", undefin
 
     newPages.push({
         id: pages.length,
-        name: t('pagetab.newpage'),
+        name: t('pagetab.newpage') + getNextPageTabCounter(),
         type: 'details',
         isActive: true
     });

@@ -19,7 +19,7 @@ const PageTabItemMoreButton = ({ onOpenContextMenu }: PageTabItemMoreButtonProps
 
     return (
         <button className="
-            flex items-center ml-2 border-[0.5px] border-transparent box-border
+            flex items-center ml-2 border-[0.5px] border-transparent box-border min-w-[17px]
             focus:outline-2 focus:outline-[#2F72E240] focus:border-[#2F72E2]
             "
             onContextMenu={onOpenContextMenu}

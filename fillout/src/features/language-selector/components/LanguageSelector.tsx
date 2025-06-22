@@ -23,7 +23,7 @@ const LanguageSelector = () => {
             [&_button]:focus:outline-2 [&_button]:focus:outline-[#2F72E240] [&_button]:focus:border-[#2F72E2]
             [&_button]:shadow-[0px_1px_3px_0px_#0000000A,0px_1px_1px_0px_#00000005]
             [&_img]:min-w-[23px] [&_img]:h-3 [&_img]:shadow-md
-            [&_span]:hidden [&_span]:sm:inline-block
+            [&_span]:hidden [&_span]:sm:inline-block [&_span]:whitespace-nowrap
         ">
             <button onClick={() => changeLanguage('en')}>
                 <img src={usFlag} />

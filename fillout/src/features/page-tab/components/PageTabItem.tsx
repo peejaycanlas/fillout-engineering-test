@@ -67,7 +67,7 @@ const PageTabItem = ({ page, onTabClick }: PageTabItemProps) => {
         <SortableItemContext.Provider value={context}>
             <div ref={setNodeRef}
                 className={
-                    "flex items-center py-1 px-2.5 " +
+                    "flex items-center py-1 px-2.5 min-w-fit " +
                     "rounded-lg box-content select-none cursor-pointer border-[0.5px] " +
                     `${page.isActive ? 'bg-white text-[#1a1a1a] border-[#e1e1e1]' : 'bg-[#9DA4B226] text-[#677289] border-[transparent]'} ` +
                     "focus:bg-white focus:text-[#1a1a1a] focus:outline-2 focus:outline-[#2F72E240] focus:border-[#2F72E2] group " +
@@ -80,7 +80,7 @@ const PageTabItem = ({ page, onTabClick }: PageTabItemProps) => {
                 onKeyDown={handleKeyDown}
             >
                 <PageTabIcon type={page.type} isActive={page.isActive} />
-                {page.name}
+                <div className="whitespace-nowrap">{page.name}</div>
                 {page.isActive && (
                     <PageTabItemMoreButton onOpenContextMenu={handleOpenContextMenu} />
                 )}

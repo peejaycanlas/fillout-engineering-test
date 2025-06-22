@@ -41,7 +41,7 @@ const PageTabs = ({ pages, onUpdatePages, onSetActivePage, onAddPage }: PageType
     };
 
     return (
-        <div className="flex flex-grow">
+        <div className="flex flex-grow overflow-x-auto">
             <DndContext
                 sensors={sensors}
                 modifiers={[restrictToHorizontalAxis]}
@@ -51,7 +51,7 @@ const PageTabs = ({ pages, onUpdatePages, onSetActivePage, onAddPage }: PageType
                     <ul className="flex list-none text-sm">
                         { pages.map((page, index) => {
                             return (
-                                <li key={page.id} className="flex">
+                                <li key={page.id} className="flex min-w-fit">
                                     <PageTabItem page={page} onTabClick={onSetActivePage} />
                                     { index < pages.length - 1 && (
                                         <PageTabSpacer id={page.id} onAddPage={handleAddPage} />
@@ -59,10 +59,12 @@ const PageTabs = ({ pages, onUpdatePages, onSetActivePage, onAddPage }: PageType
                                 </li>
                             )
                         })}
+                        <li className="min-w-fit">
+                            <PageTabAddButton onAddPage={handleAddPage} />
+                        </li>
                     </ul>
                 </SortableContext>
             </DndContext>
-            <PageTabAddButton onAddPage={handleAddPage} />
         </div>
     );
 };
