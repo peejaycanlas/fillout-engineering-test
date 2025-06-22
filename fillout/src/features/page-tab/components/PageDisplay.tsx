@@ -2,7 +2,7 @@ import type { Page } from "../types";
 
 type PageDisplayProps = {
     currentPage: Page | undefined;
-}
+};
 
 const PageDisplay = ({ currentPage }: PageDisplayProps) => {
     return (

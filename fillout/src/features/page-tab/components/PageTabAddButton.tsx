@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation, type UseTranslationResponse } from "react-i18next";
 import addNewButtonIcon from '../images/add.svg';
 
 type PageTabAddButtonProps = {
@@ -6,7 +6,7 @@ type PageTabAddButtonProps = {
 };
 
 const PageTabAddButton = ({ onAddPage }: PageTabAddButtonProps) => {
-    const { t } = useTranslation();
+    const { t }: UseTranslationResponse<"translation", undefined> = useTranslation();
 
     return (
         <div className="

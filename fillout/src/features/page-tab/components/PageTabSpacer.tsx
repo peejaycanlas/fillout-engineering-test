@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation, type UseTranslationResponse } from "react-i18next";
 import type { Page } from "../types";
 
 type PageTypeSpacerProps = {
@@ -7,7 +7,7 @@ type PageTypeSpacerProps = {
 }
 
 const PageTabSpacer = ({ page, onAddPage }: PageTypeSpacerProps) => {
-    const { t } = useTranslation();
+    const { t }: UseTranslationResponse<"translation", undefined> = useTranslation();
 
     const handleAddPage = (): void => {
         onAddPage(page.index);

@@ -1,4 +1,4 @@
-import { DndContext, KeyboardSensor, PointerSensor, TouchSensor, useSensor, useSensors, type DragEndEvent } from "@dnd-kit/core";
+import { DndContext, KeyboardSensor, PointerSensor, TouchSensor, useSensor, useSensors, type DragEndEvent, type SensorDescriptor, type SensorOptions } from "@dnd-kit/core";
 import type { Page } from "../types";
 import PageTabItem from "./PageTabItem";
 import { arrayMove, SortableContext, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
@@ -15,7 +15,7 @@ type PageTypeProps = {
 };
 
 const PageTabs = ({ pages, onUpdatePages, onSetActivePage, onAddPage }: PageTypeProps) => {
-    const sensors = useSensors(
+    const sensors: SensorDescriptor<SensorOptions>[] = useSensors(
         useSensor(PointerSensor, {
             activationConstraint: {
                 distance: 0.01
@@ -29,10 +29,10 @@ const PageTabs = ({ pages, onUpdatePages, onSetActivePage, onAddPage }: PageType
 
     const handleDragEnd = (event: DragEndEvent): void => {
         if (event.over && event.active.id !== event.over?.id) {
-            const activeIndex = pages.findIndex(({ id }) => id === event.active.id);
-            const overIndex = pages.findIndex(({ id }) => id === event.over?.id);
+            const activeIndex: number = pages.findIndex(({ id }) => id === event.active.id);
+            const overIndex: number = pages.findIndex(({ id }) => id === event.over?.id);
 
-            const newPages = arrayMove(pages, activeIndex, overIndex).map((page, index) => {
+            const newPages: Page[] = arrayMove(pages, activeIndex, overIndex).map((page, index) => {
                 return {
                     ...page,
                     index: index

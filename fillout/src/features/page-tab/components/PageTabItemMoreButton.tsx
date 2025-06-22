@@ -1,14 +1,14 @@
 import type { KeyboardEvent, MouseEvent } from "react";
 
 import settingsIcon from '../images/settings.svg';
-import { useTranslation } from "react-i18next";
+import { useTranslation, type UseTranslationResponse } from "react-i18next";
 
 type PageTabItemMoreButtonProps = {
     onOpenContextMenu(event: MouseEvent | KeyboardEvent): void
 };
 
 const PageTabItemMoreButton = ({ onOpenContextMenu }: PageTabItemMoreButtonProps) => {
-    const { t } = useTranslation();
+    const { t }: UseTranslationResponse<"translation", undefined> = useTranslation();
 
     const handleKeyDown = (event: KeyboardEvent): void => {
         if (event.key === ' ' || event.key === 'Enter') {

@@ -69,14 +69,14 @@ const createNewPage = (index: number | undefined, pageLength: number, t: TFuncti
 };
 
 export const insertNewPage = (newIndex: number, pages: Page[], t: TFunction<"translation", undefined>): Page[] => {
-    const newPages = resetActivePage(pages);
+    const newPages: Page[] = resetActivePage(pages);
 
     newPages.splice(newIndex + 1, 0, createNewPage(newIndex + 1, pages.length, t));
     return newPages;
 };
 
 export const appendNewPage = (pages: Page[], t: TFunction<"translation", undefined>): Page[] => {
-    const newPages = resetActivePage(pages);
+    const newPages: Page[] = resetActivePage(pages);
 
     newPages.push(createNewPage(undefined, pages.length, t));
     return newPages;

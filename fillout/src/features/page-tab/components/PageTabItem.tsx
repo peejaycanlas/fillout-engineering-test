@@ -1,4 +1,4 @@
-import { createContext, useMemo, type MouseEvent, type CSSProperties, type KeyboardEvent } from "react";
+import { createContext, useMemo, type MouseEvent, type CSSProperties, type KeyboardEvent, type Context } from "react";
 import type { Page } from "../types";
 import { useSortable } from "@dnd-kit/sortable";
 import type { DraggableSyntheticListeners } from "@dnd-kit/core";
@@ -11,13 +11,13 @@ type PageTabItemProps = {
     onTabClick(page: Page): void
 };
 
-type Context = {
+type DnDContext = {
     attributes: Record<string, any>;
     listeners: DraggableSyntheticListeners,
     ref(node: HTMLElement | null): void;
 };
 
-const SortableItemContext = createContext<Context>({
+const SortableItemContext: Context<DnDContext> = createContext<DnDContext>({
     attributes: {},
     listeners: undefined,
     ref() {}
