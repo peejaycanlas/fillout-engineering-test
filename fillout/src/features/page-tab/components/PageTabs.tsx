@@ -32,12 +32,19 @@ const PageTabs = ({ pages, onUpdatePages, onSetActivePage, onAddPage }: PageType
             const activeIndex = pages.findIndex(({ id }) => id === event.active.id);
             const overIndex = pages.findIndex(({ id }) => id === event.over?.id);
 
-            onUpdatePages(arrayMove(pages, activeIndex, overIndex));
+            const newPages = arrayMove(pages, activeIndex, overIndex).map((page, index) => {
+                return {
+                    ...page,
+                    index: index
+                };
+            });
+
+            onUpdatePages(newPages);
         }
     };
 
-    const handleAddPage = (id: number | undefined): void => {
-        onAddPage(id);
+    const handleAddPage = (index: number | undefined): void => {
+        onAddPage(index);
     };
 
     return (
@@ -54,7 +61,7 @@ const PageTabs = ({ pages, onUpdatePages, onSetActivePage, onAddPage }: PageType
                                 <li key={page.id} className="flex min-w-fit">
                                     <PageTabItem page={page} onTabClick={onSetActivePage} />
                                     { index < pages.length - 1 && (
-                                        <PageTabSpacer id={page.id} onAddPage={handleAddPage} />
+                                        <PageTabSpacer page={page} onAddPage={handleAddPage} />
                                     )}
                                 </li>
                             )

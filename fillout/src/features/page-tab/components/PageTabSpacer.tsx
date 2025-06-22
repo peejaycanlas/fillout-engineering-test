@@ -1,15 +1,16 @@
 import { useTranslation } from "react-i18next";
+import type { Page } from "../types";
 
 type PageTypeSpacerProps = {
-    id: number,
+    page: Page,
     onAddPage(id: number | undefined): void;
 }
 
-const PageTabSpacer = ({ id, onAddPage }: PageTypeSpacerProps) => {
+const PageTabSpacer = ({ page, onAddPage }: PageTypeSpacerProps) => {
     const { t } = useTranslation();
 
     const handleAddPage = (): void => {
-        onAddPage(id);
+        onAddPage(page.index);
     };
 
     return (
@@ -30,6 +31,7 @@ const PageTabSpacer = ({ id, onAddPage }: PageTypeSpacerProps) => {
                 after:bg-[url('src/features/page-tab/images/add-small.svg')] after:bg-no-repeat
                 "
                 onClick={handleAddPage}
+                title={t('pagetab.addpage')}
             >
                 <span className="sr-only">{t('pagetab.addpage')}</span>
             </button>

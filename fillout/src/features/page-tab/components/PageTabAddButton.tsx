@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import addNewButtonIcon from '../images/add.svg';
 
 type PageTabAddButtonProps = {
-    onAddPage(id: number | undefined): void
+    onAddPage(index: number | undefined): void
 };
 
 const PageTabAddButton = ({ onAddPage }: PageTabAddButtonProps) => {

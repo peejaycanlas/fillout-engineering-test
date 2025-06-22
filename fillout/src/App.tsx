@@ -20,13 +20,13 @@ const App = () => {
     setPages(newPages);
   };
 
-  const addPage = (id : number | undefined): void => {
+  const addPage = (index : number | undefined): void => {
     let newPages: Page[] = [];
 
-    if (id) {
-      newPages = insertNewPage(id, pages, t);
-    } else {
+    if (typeof index === 'undefined') {
       newPages = appendNewPage(pages, t);
+    } else {
+      newPages = insertNewPage(index, pages, t);
     }
 
     setPages(newPages);
