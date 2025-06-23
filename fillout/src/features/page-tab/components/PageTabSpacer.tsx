@@ -19,7 +19,7 @@ const PageTabSpacer = ({ page, onAddPage }: PageTypeSpacerProps) => {
             transition-[padding_100ms_ease-in-out]
             hover:px-5
             after:absolute after:left-0 after:top-[calc(50%-0.75px)] after:h-[1.5px] after:w-full after:overflow-hidden
-            after:bg-[url('images/dashes.png')] after:bg-repeat-x
+            after:bg-[url('/images/dashes.png')] after:bg-repeat-x
         ">
             <button className="
                 invisible size-0 opacity-0 z-10 cursor-pointer -translate-1/2
@@ -28,7 +28,7 @@ const PageTabSpacer = ({ page, onAddPage }: PageTypeSpacerProps) => {
                 group-hover:visible group-hover:size-4 group-hover:opacity-100
                 transition-[size_250ms_ease-in-out,opacity_250ms_ease-in-out,rotate_250ms_ease-in-out]
                 after:absolute after:top-[50%] after:left-[50%] after:transform-[translate(-50%,-50%)] after:size-2
-                after:bg-[url('images/add-small.svg')] after:bg-no-repeat
+                after:bg-[url('/images/add-small.svg')] after:bg-no-repeat
                 "
                 onClick={handleAddPage}
                 title={t('pagetab.addpage')}
