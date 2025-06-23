@@ -12,7 +12,7 @@ const PageTabAddButton = ({ onAddPage }: PageTabAddButtonProps) => {
         <div className="
             relative min-w-fit
             before:absolute before:top-[calc(50%-0.75px)] before:left-0 before:h-[1.5px] before:w-5 before:overflow-hidden
-            before:bg-[url('src/features/page-tab/images/dashes.png')] before:bg-repeat-x
+            before:bg-[url('images/dashes.png')] before:bg-repeat-x
             "
             data-no-dnd="true"
         >
