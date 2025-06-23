@@ -7,3 +7,5 @@ export type Page = {
   type: PageType,
   isActive: boolean
 };
+
+export type PageTabMenuIconType = 'setfirstpage' | 'rename' | 'copy' | 'duplicate' | 'delete';

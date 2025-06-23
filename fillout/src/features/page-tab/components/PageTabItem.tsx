@@ -1,10 +1,11 @@
-import { createContext, useMemo, type MouseEvent, type CSSProperties, type KeyboardEvent, type Context } from "react";
+import { createContext, useMemo, type MouseEvent, type CSSProperties, type KeyboardEvent, type Context, useState, useEffect, type TouchEvent } from "react";
 import type { Page } from "../types";
 import { useSortable } from "@dnd-kit/sortable";
 import type { DraggableSyntheticListeners } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import PageTabIcon from "./PageTabIcon";
 import PageTabItemMoreButton from "./PageTabItemMoreButton";
+import PageTabContextMenu from "./PageTabContextMenu";
 
 type PageTabItemProps = {
     page: Page,
@@ -24,6 +25,8 @@ const SortableItemContext: Context<DnDContext> = createContext<DnDContext>({
 });
 
 const PageTabItem = ({ page, onTabClick }: PageTabItemProps) => {
+    const [ menuVisible, setMenuVisible ] = useState<boolean>(false);
+
     const {
         attributes,
         listeners,
@@ -42,6 +45,10 @@ const PageTabItem = ({ page, onTabClick }: PageTabItemProps) => {
         [attributes, listeners, setActivatorNodeRef]
     );
 
+    useEffect(() => {
+        setMenuVisible(false);
+    }, [page]);
+
     const handleTabClick = (): void => {
         onTabClick(page);
     };
@@ -53,9 +60,18 @@ const PageTabItem = ({ page, onTabClick }: PageTabItemProps) => {
         }
     };
 
-    const handleOpenContextMenu = (event: MouseEvent | KeyboardEvent): void => {
+    const handleOpenContextMenu = (event: MouseEvent | KeyboardEvent | TouchEvent): void => {
         event.preventDefault();
-        console.log('handleOpenContextMenu', page);
+        setMenuVisible(true);
+    };
+
+    const handleCloseContextMenu = (): void => {
+        setMenuVisible(false);
+    };
+
+    const handleContextMenuClick = (menuItem: string): void => {
+        alert(`Context menu item for Page "${page.name}" clicked: ${menuItem}`);
+        setMenuVisible(false);
     };
 
     const pageStyles: CSSProperties = {
@@ -67,7 +83,7 @@ const PageTabItem = ({ page, onTabClick }: PageTabItemProps) => {
         <SortableItemContext.Provider value={context}>
             <div ref={setNodeRef}
                 className={
-                    "flex items-center py-1 px-2.5 min-w-fit " +
+                    "relative flex items-center py-1 px-2.5 min-w-fit " +
                     "rounded-lg box-content select-none cursor-pointer border-[0.5px] " +
                     `${page.isActive ? 'bg-white text-[#1a1a1a] border-[#e1e1e1]' : 'bg-[#9DA4B226] text-[#677289] border-[transparent]'} ` +
                     "focus:bg-white focus:text-[#1a1a1a] focus:outline-2 focus:outline-[#2F72E240] focus:border-[#2F72E2] group " +
@@ -82,7 +98,10 @@ const PageTabItem = ({ page, onTabClick }: PageTabItemProps) => {
                 <PageTabIcon type={page.type} isActive={page.isActive} />
                 <div className="whitespace-nowrap">{page.name}</div>
                 {page.isActive && (
-                    <PageTabItemMoreButton onOpenContextMenu={handleOpenContextMenu} />
+                    <>
+                        <PageTabItemMoreButton onOpenContextMenu={handleOpenContextMenu} />
+                        <PageTabContextMenu isVisible={menuVisible} onMenuClick={handleContextMenuClick} onCloseMenu={handleCloseContextMenu} />
+                    </>
                 )}
             </div>
         </SortableItemContext.Provider>
